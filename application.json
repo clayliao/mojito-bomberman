@@ -1,0 +1,33 @@
+[{
+    "settings"          : [ "master" ],
+    "staticHandling"    : {
+        "appName"           : "bomberman"
+    },
+    "specs"             : {
+        "base"              : {
+            "type"              : "baseMojit",
+            "config"            : {
+                "deploy"            : true,
+                "child"             : {
+                    "player"            : {
+                        "type"              : "playerMojit"
+                    },
+                    "map"               : {
+                        "type"              : "mapMojit",
+                        "config": {
+                            "children": {
+                                "tile": {
+                                    "type": "tileMojit"
+                                }
+                            },
+                            "tileSize": 26
+                        }
+                    }
+                }
+            },
+            "assets"            : {
+                "js"                : ["/assets/js/crafty/crafty-release.js"]
+            }
+        }
+    }
+}]

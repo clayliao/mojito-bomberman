@@ -1,0 +1,82 @@
+#cr-stage .player:before,
+#cr-stage .player:after {
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 50%;
+}
+
+#cr-stage .player a:before,
+#cr-stage .player a:after {
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 50%;
+}
+
+#cr-stage .player {
+    border-radius: 5px 0 5px 5px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    left: 2px;
+}
+
+#cr-stage .player a:before {
+    border-radius: 5px 0 5px 5px;
+    border: 1px solid #000;
+    width: 20px;
+    height: 16px;
+}
+
+#cr-stage .player a:after {
+    border-color: #000;
+    border-style: solid;
+    border-width: 0 2px;
+    width: 4px;
+    height: 6px;
+    top: 13px;
+    left: 6px;
+    margin-top: -4px;
+}
+
+#cr-stage .player a:before,
+#cr-stage .player a:after {
+    background: none repeat scroll 0 0 transparent;
+    margin: -9px 0 0;
+}
+
+#cr-stage .player.n,
+#cr-stage .player.n a:before {
+    border-radius: 0 5px 5px 5px;
+}
+
+#cr-stage .player.n a:after {
+    border-width: 0;
+}
+
+#cr-stage .player.e,
+#cr-stage .player.e a:before {
+    border-radius: 0 5px 5px 5px;
+}
+
+#cr-stage .player.e a:after {
+    left: 9px;
+}
+
+#cr-stage .player.w a:after {
+    left: 4px;
+}
+
+#cr-stage .player.s a:after {
+    left: 6px;
+}
+
+#cr-stage .player.dead a:before {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+#cr-stage .player.dead a:after {
+    border-color: #000;
+}

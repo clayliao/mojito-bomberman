@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{#translations}}{{appName}}{{/translations}}</title>
+        <!-- top assets -->
+        {{{top}}}
+    </head>
+    <body>
+        <div id="{{mojit_view_id}}">
+            {{{map}}}
+            {{{player}}}
+        </div>
+    
+    <!-- bottom assets -->
+    {{{bottom}}}
+
+    <script>
+        var socket = io.connect('{{#settings}}{{socketio_url}}{{/settings}}');
+        
+        socket.on('mapInit', function (data) {
+
+            var game = new Base(data);
+            game.init();
+
+            socket.on('heartbeat', function (data) {
+                game.heartbeat(data);
+            });
+
+            socket.on('playerJoined', function (data) {
+                game.addPlayer(data);
+            });
+
+            socket.on('playersDied', function (data) {
+                game.allRemovePlayers(data);
+            });
+
+            socket.on('playerDisconnect', function (data) {
+                game.removePlayer(data, false);
+            });
+
+            socket.on('bombAdded', function (data) {
+                game.allInsertBombs(data);
+            });
+
+            socket.on('bombExploded', function (data) {
+                game.allDetonateBombs(data);
+            });
+
+            window.onbeforeunload = function () {
+                game.end();
+            };
+        });
+    </script>
+    </body>
+</html>
